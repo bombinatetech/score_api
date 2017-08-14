@@ -2,7 +2,7 @@ defmodule ScoreApi.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :feed_api,
+    [app: :score_api,
      version: "0.1.0",
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
@@ -12,7 +12,7 @@ defmodule ScoreApi.Mixfile do
 
   def application do
     [applications: [:logger,:cowboy,:plug,:mariaex,:ecto,:httpotion,:httpoison],
-     mod: {FeedApi, []}]
+     mod: {ScoreApi, []}]
   end
 
   defp deps do

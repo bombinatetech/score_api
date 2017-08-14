@@ -31,12 +31,9 @@ defmodule ScoreApi.Router do
     #discover feed fetch from here.
     #it will be based on user_id.
     #auth or no auth ?? need to discuss.
-    get "/user/:user_id/trending" do
-      :lager.log(:info, self, "~p - Requested for trending feeds",[user_id])
-      qf      = fetch_query_params(conn)
-      limit   = if qf.query_params["limit"]   == nil do 10 else  String.to_integer(qf.query_params["limit"]) end
-      offset  = if qf.query_params["offset"]  == nil do 0 else   String.to_integer(qf.query_params["offset"]) end
-        {status,response} = with  {:ok,feeds}  <- FeedApi.Discover.get_discover_feed(limit,offset) do
+    put "/ver2/score/topic/:topic_id" do
+      :lager.log(:info, self, "~p - Requested for trending feeds",[topic_id])
+        {status,response} = with  {:ok,feeds}  <- ScoreApi.ScoringManager.add_topic_to_score_table(topic_id) do
                                   {200,Poison.encode!(feeds)}
                else
                                {:error,msg}        -> {400,Poison.encode!(%{message: msg})}

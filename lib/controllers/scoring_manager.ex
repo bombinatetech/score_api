@@ -1,11 +1,11 @@
 defmodule ScoreApi.ScoringManager do
     use GenServer
     require Logger
+    alias ScoreApi.ScoringModel
     
-        @spec get_discover_feed(integer,integer) :: [...]
         def add_topic_to_score_table(topic_id) do
                 GenServer.call(__MODULE__,{:add_topic,topic_id})
-                {:ok,data}  
+                :ok
         end
 
         def start_link() do
@@ -20,14 +20,15 @@ defmodule ScoreApi.ScoringManager do
         end
 
         def handle_call({:add_topic,topic_id},_From,state) do
-            case :ets.lookup(:score_table,:topics) of
+            case :ets.lookup(:score_table,:topics) do
                 [] ->
-                    ok;
+                    :ets.insert(:score_table,{:topics,[topic_id]})
+                    :ok
                 data ->
                     if Enum.member?(data, topic_id) do
                         :ok
                     else
-                        :ets.insert(:score_table,{topics,[topic_id|data]})
+                        :ets.insert(:score_table,{:topics,[topic_id|data]})
                         :ok
                     end
             end
@@ -46,15 +47,16 @@ defmodule ScoreApi.ScoringManager do
 
         #internal functions
         def update_scores() do
-            case :ets.lookup(:score_table,:topics) of
+            case :ets.lookup(:score_table,:topics) do
                 [] ->
-                    ok;
+                    :ok
                 data ->
-                    ScoringModel.update_scores(data)
+                    IO.inspect data
+                    :ets.insert(:score_table,{:topics,[]})
+                    ScoringModel.update_scores(data[:topics])
             end
             timer = Application.get_env(:score_api, :refresh_scores)[:scores_refresh_timer]
             :erlang.send_after(timer, self(), :refresh_scores)
             :ok         
         end
-
 end

@@ -6,8 +6,8 @@ defmodule ScoreApi do
     import Supervisor.Spec, warn: false
 
     children = [
+    Plug.Adapters.Cowboy.child_spec(:http, ScoreApi.Router, [], [port: 8090,acceptors: 200,max_connections: 20000,compress: true]),
     supervisor(ScoreApi.Repo, []),
-        Plug.Adapters.Cowboy.child_spec(:http, FeedApi.Router, [], [port: 8090,acceptors: 200,max_connections: 20000,compress: true]),
     worker(ScoreApi.ScoringManager,[])
     ]
 
