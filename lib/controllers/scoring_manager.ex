@@ -5,7 +5,7 @@ defmodule ScoreApi.ScoringManager do
     
         def add_topic_to_score_table(topic_id) do
                 GenServer.call(__MODULE__,{:add_topic,topic_id})
-                :ok
+                {:ok,"success"}
         end
 
         def start_link() do
