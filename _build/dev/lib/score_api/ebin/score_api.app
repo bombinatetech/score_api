@@ -1,0 +1,11 @@
+{application,score_api,
+             [{description,"score_api"},
+              {modules,['Elixir.ScoreApi','Elixir.ScoreApi.Repo',
+                        'Elixir.ScoreApi.Router',
+                        'Elixir.ScoreApi.ScoringManager',
+                        'Elixir.ScoreApi.ScoringModel']},
+              {registered,[]},
+              {vsn,"0.1.0"},
+              {applications,[kernel,stdlib,elixir,logger,cowboy,plug,mariaex,
+                             ecto,httpotion,httpoison]},
+              {mod,{'Elixir.ScoreApi',[]}}]}.

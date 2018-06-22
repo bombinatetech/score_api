@@ -1,0 +1,13 @@
+{application,score_api,
+             [{description,"score_api"},
+              {modules,['Elixir.ScoreApi','Elixir.ScoreApi.Repo',
+                        'Elixir.ScoreApi.Router',
+                        'Elixir.ScoreApi.ScoringManager',
+                        'Elixir.ScoreApi.ScoringModel']},
+              {registered,[]},
+              {vsn,"0.1.0"},
+              {applications,[kernel,stdlib,elixir,logger,cors_plug,cowboy,
+                             plug,mariaex,ecto,httpotion,httpoison,poison,
+                             joken,os_mon]},
+              {included_applications,[lager,parse_trans,uuid]},
+              {mod,{'Elixir.ScoreApi',[]}}]}.

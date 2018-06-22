@@ -18,7 +18,6 @@ defmodule ScoreApi.Router do
     get "/health" do
         resp = %{
             version: "16.11.23",
-            mode: Mix.env,
             upgrades: %{
               one: "Init."
             } 

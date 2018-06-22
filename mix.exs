@@ -11,7 +11,26 @@ defmodule ScoreApi.Mixfile do
   end
 
   def application do
-    [applications: [:logger,:cowboy,:plug,:mariaex,:ecto,:httpotion,:httpoison],
+    [applications: [:logger,
+                    :cors_plug,
+                    :cowboy,
+                    :plug,
+                    :mariaex,
+                    :ecto,
+                    :httpotion,
+                    :httpoison,
+                    :poison,
+                    :mariaex,
+                    :ecto,
+                    :joken,
+                    :os_mon
+                    ],
+    included_applications: [              
+                    :lager,
+                    :parse_trans,
+                    :uuid
+                    ],
+           
      mod: {ScoreApi, []}]
   end
 
@@ -27,6 +46,8 @@ defmodule ScoreApi.Mixfile do
       {:httpotion, "~> 3.0.0"},
       {:joken, "~> 1.2"},
       {:httpoison, "~> 0.7"},
-      {:uuid, "~> 1.1"}]
+      {:uuid, "~> 1.1"},
+      {:distillery, "~> 1.5"}
+      ]
   end
 end
