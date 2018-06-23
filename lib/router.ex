@@ -19,7 +19,8 @@ defmodule ScoreApi.Router do
         resp = %{
             version: "16.11.23",
             upgrades: %{
-              one: "Init."
+              one: "Init.",
+              msg: "deploy"
             } 
         }
         conn
