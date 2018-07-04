@@ -33,6 +33,12 @@ environment :dev do
   set cookie: :"GMatm:*R^W/Ie``6^F:ZcYf_el:Hx/u{A0}Uwv{q$C%^VkGAOBom26AY.7qqL!S="
 end
 
+environment :staging do
+  set include_erts: true
+  set include_src: false
+  set cookie: :"$&f(IBOQ{N8n^LV.T>L^Ui]H;@/pb(/spJQT{qQTY!X7jTJiy!0/*e2ofk.jvn,F"
+end
+
 environment :prod do
   set include_erts: true
   set include_src: false

@@ -6,7 +6,7 @@ config :score_api, ScoreApi.Repo,
     database: "vokal_staging",
     username: "oktalk_test",
     password: "oktalk_test",
-    hostname: "test.cmavudufltgr.ap-southeast-1.rds.amazonaws.com"
+    hostname: "35.200.250.169"
 
 
 config :score_api, :refresh_scores,

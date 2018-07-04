@@ -20,7 +20,8 @@ defmodule ScoreApi.Router do
             version: "16.11.23",
             upgrades: %{
               one: "Init.",
-              msg: "full deployment"
+              msg: "full deployment",
+              conn: "mysql-connect"
             } 
         }
         conn
